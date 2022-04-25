@@ -4,14 +4,13 @@ import { DataService } from '../data.service';
 import { Recipe } from '../recipe';
 
 @Component({
-  selector: 'app-recipe-card',
-  templateUrl: './recipe-card.component.html',
-  styleUrls: ['./recipe-card.component.scss']
+  selector: 'app-recipe',
+  templateUrl: './recipe.component.html',
+  styleUrls: ['./recipe.component.scss']
 })
-export class RecipeCardComponent implements OnInit {
+export class RecipeComponent implements OnInit {
 
-  @Input() recipe?: Recipe
-
+  recipe!: Recipe
   subscription?: Subscription
 
   constructor(
@@ -22,12 +21,12 @@ export class RecipeCardComponent implements OnInit {
     this.subscription = this.data.currentRecipe.subscribe(recipe => this.recipe = recipe)
   }
 
-  // ngOnDestroy() {
-  //   this.subscription?.unsubscribe()
-  // }
+  ngOnDestroy() {
+    this.subscription?.unsubscribe()
+  }
 
-  // newRecipe() {
-  //   this.data.changeRecipe(this.recipe)
-  // }
+  newRecipe() {
+    this.data.changeRecipe(this.recipe)
+  }
 
 }

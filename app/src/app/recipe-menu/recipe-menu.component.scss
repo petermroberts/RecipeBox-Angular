@@ -1,0 +1,16 @@
+
+.recipe-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .recipe-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+}
+
+

@@ -1,13 +1,52 @@
-<p>new-recipe works!</p>
 <div class="new-recipe-form">
   <label for="title">Title: </label>
-  <input type="text" id="title">
+  <input type="text" id="title" [(ngModel)]="newRecipe.title">
 
   <br>
   <br>
 
-  <label for="meals">Meal: </label>
-  <select name="meals" id="meals">
+  <label for="meal">Meal: </label>
+  <select name="meal" id="meal" [(ngModel)]="newRecipe.meal">
+    <option value="Breakfast">Breakfast</option>
+    <option value="Brunch">Brunch</option>
+    <option value="Lunch">Lunch</option>
+    <option value="Dinner">Dinner</option>
+    <option value="Snack">Snack</option>
+  </select>
+
+  <br>
+  <br>
+
+  <label for="yeild">Yeild: </label>
+  <input type="number" id="yeild" min="0" [(ngModel)]="newRecipe.yeild">
+
+  <br>
+  <br>
+
+  <label for="prep-time">Time to make: </label>
+  <input type="number" id="prep-time" min="0" [(ngModel)]="newRecipe.prep_time">
+
+  <br>
+  <br>
+
+  <label for="type">Type of dish: </label>
+  <select name="meal-type" id="type" [(ngModel)]="newRecipe.type">
+    <option value="Bread">Bread</option>
+    <option value="Dessert">Dessert</option>
+    <option value="Pasta">Pasta</option>
+    <option value="Pizza">Pizza</option>
+    <option value="Roast">Roast</option>
+    <option value="Salad">Salad</option>
+    <option value="Sandwich">Sandwich</option>
+    <option value="Soup">Soup</option>
+  </select>
+
+  <br>
+  <br>
+
+
+  <label for="Cuisine">Cuisine: </label>
+  <select name="cuisine" id="cuisine" [(ngModel)]="newRecipe.cuisine">
     <option value="American">American</option>
     <option value="British">British</option>
     <option value="Cajun">Cajun</option>
@@ -38,61 +77,13 @@
   <br>
   <br>
 
-  <label for="yeild">Yeild: </label>
-  <input type="number" id="yeild">
-
-  <br>
-  <br>
-
-  <label for="prep-time">Time to make: </label>
-  <input type="number" id="prep-time">
-
-  <br>
-  <br>
-
-  <label for="type">Type of dish: </label>
-  <select name="meal-type" id="type">
-    <option value="Bread">Bread</option>
-    <option value="Dessert">Dessert</option>
-    <option value="Pasta">Pasta</option>
-    <option value="Pizza">Pizza</option>
-    <option value="Roast">Roast</option>
-    <option value="Salad">Salad</option>
-    <option value="Sandwich">Sandwich</option>
-    <option value="Soup">Soup</option>
-  </select>
-
-  <br>
-  <br>
-
-  <label for="meal">Meal: </label>
-  <select name="meal" id="meal">
-    <option value="Breakfast">Breakfast</option>
-    <option value="Brunch">Brunch</option>
-    <option value="Lunch">Lunch</option>
-    <option value="Dinner">Dinner</option>
-    <option value="Snack">Snack</option>
-  </select>
-
-  <br>
-  <br>
-
   <label for="diets">Dietary concerns: </label>
-  <div id="diets">
-    <input type="radio" id="Vegetarian">
-    <label for="Vegetarian">Vegetarian</label>
-    <input type="radio" id="Vegan">
-    <label for="Vegan">Vegan</label>
-    <input type="radio" id="Dairy Free">
-    <label for="Dairy Free">Lactose Intolerance</label>
-    <input type="radio" id="Gluten Free">
-    <label for="Gluten Free">Gluten Free</label>
-    <input type="radio" id="Peanut Free">
-    <label for="Peanut Free">Peanut Free</label>
-    <input type="radio" id="Kosher">
-    <label for="Kosher">Kosher</label>
-    <input type="radio" id="Halal">
-    <label for="Halal">Halal</label>
+  <div class="diets">
+    <span *ngFor="let diet of diets">
+      <mat-checkbox [(ngModel)]="diet.checked">
+        {{diet.name}}
+      </mat-checkbox>
+    </span>
   </div>
 
   <br>
@@ -105,26 +96,48 @@
 
   <div *ngIf="addNewIngredient">
     <p>New Ingredient</p>
-    <input type="number">
-    <select name="unit" id="unit">
+    <input type="number" min="0" step="0.125" max="10" [(ngModel)]="newIngredient.quantity">
+    <select name="unit" id="unit" [(ngModel)]="newIngredient.unit">
       <option value="tsp">tsp</option>
       <option value="tbsp">tbsp</option>
       <option value="cup">cup</option>
       <option value="grams">grams</option>
     </select>
     of
-    <input type="text">
+    <input type="text" [(ngModel)]="newIngredient.ingredient">
     <button type="button" (click)="addIngredient()">Add Ingredient</button>
-    <button type="button" (click)="addNewIngredient = false">Cancel</button>
+    <button type="button" (click)="cancelNewIngredient()">Cancel</button>
   </div>
 
   <button *ngIf="addNewIngredient === false"
-  type="button" (click)="addNewIngredient = true">
+  type="button" (click)="showNewIngredientForm()">
     New Ingredient
   </button>
 
   <br>
   <br>
+
+  <label for="directions">Directions</label>
+  <div *ngFor="let direction of directions">
+    <p>{{direction}}</p>
+  </div>
+
+  <div *ngIf="addNewDirection">
+    <p>New Direction</p>
+    <textarea name="direction" id="direction" cols="30" rows="10" [(ngModel)]="newDirection"></textarea>
+    <button type="button" (click)="addDirection()">Add Direction</button>
+    <button type="button" (click)="cancelNewDirection()">Cancel</button>
+  </div>
+
+  <button *ngIf="addNewDirection === false"
+  type="button" (click)="showNewDirectionForm()">
+    New Direction
+  </button>
+
+  <br>
+  <br>
+
+  <button type="button" (click)="createRecipe()">Save Recipe</button>
 
   <button type="button" (click)="goBack()">Go Back</button>
 </div>
