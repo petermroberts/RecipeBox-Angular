@@ -29,4 +29,16 @@ export class RecipeMenuComponent implements OnInit {
       })
   }
 
+  deleteRecipe(recipe: Recipe): void {
+
+    this.recipeService.deleteRecipe(recipe)
+      .then( returnVal => {
+        this.recipes.forEach((value, index) => {
+          if(value['_id'] == recipe['_id']) this.recipes.splice(index,1);
+        })
+      }).catch( err => {
+        console.log("Axios err: ", err);
+      })
+  }
+
 }

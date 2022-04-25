@@ -1,5 +1,15 @@
 #navbar {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   h1 {
     font-family: 'Courier New', Courier, monospace;
   }
+
+  a {
+    padding: 25px;
+  }
+
 }
