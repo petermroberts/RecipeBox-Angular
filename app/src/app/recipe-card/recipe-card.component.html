@@ -1,1 +1,7 @@
-<p>recipe-card works!</p>
+<div *ngIf="recipe">
+  <h3>{{recipe.title}}</h3>
+  <p>Total Time: {{recipe.prep_time}} minutes</p>
+  <p>Cuisine: {{recipe.cuisine}}</p>
+  <p>{{recipe.type}}</p>
+  <p>Yeilds {{recipe.yeild}} servings</p>
+</div>

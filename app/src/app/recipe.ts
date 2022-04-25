@@ -1,6 +1,7 @@
 export interface Recipe {
   _id?: string,
   meal: string,
+  title: string,
   yeild: string,
   prep_time: string,
   type: string,

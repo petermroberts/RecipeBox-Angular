@@ -1,1 +1,8 @@
-<p>recipe-menu works!</p>
+<h2>Recipes</h2>
+
+<app-recipe-card
+  *ngFor="let recipe of recipes"
+  [recipe]="recipe">
+</app-recipe-card>
+
+<div class="card"><a router-link="/new-recipe">New Recipe</a></div>
