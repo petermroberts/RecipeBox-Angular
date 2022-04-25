@@ -1,12 +1,10 @@
 <h2>Recipes</h2>
 
-<div class="recipe-deck">
-  <div class="recipe-card" *ngFor="let recipe of recipes" routerLink="/recipe/{{recipe.title}}">
-    <app-recipe-card
-    [recipe]="recipe">
-  </app-recipe-card>
-  <button class="delete" type="button" (click)="deleteRecipe(recipe)">Delete Recipe</button>
-  </div>
+<app-recipe-card
+  *ngFor="let recipe of recipes"
+  [recipe]="recipe">
+</app-recipe-card>
+
+<div class="card">
+  <a routerLink="/new-recipe">New Recipe</a>
 </div>
-
-
