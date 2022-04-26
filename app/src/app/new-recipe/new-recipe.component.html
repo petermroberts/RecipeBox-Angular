@@ -122,10 +122,10 @@
     <p>{{direction}}</p>
   </div>
 
-  <div *ngIf="addNewDirection">
-    <p>New Direction</p>
+  <div *ngIf="addNewDirection" class="directions">
+    <p>New Step </p>
     <textarea name="direction" id="direction" cols="30" rows="10" [(ngModel)]="newDirection"></textarea>
-    <button type="button" (click)="addDirection()">Add Direction</button>
+    <button type="button" (click)="addDirection()">Add Step</button>
     <button type="button" (click)="cancelNewDirection()">Cancel</button>
   </div>
 
