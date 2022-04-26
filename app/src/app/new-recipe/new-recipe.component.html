@@ -94,7 +94,7 @@
     <p>{{ingredient.quantity}} {{ingredient.unit}} of {{ingredient.ingredient}}</p>
   </div>
 
-  <div *ngIf="addNewIngredient">
+  <div *ngIf="addNewIngredient" class="new-ingredient">
     <p>New Ingredient</p>
     <input type="number" min="0" step="0.125" max="10" [(ngModel)]="newIngredient.quantity">
     <select name="unit" id="unit" [(ngModel)]="newIngredient.unit">

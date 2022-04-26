@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 import { Recipe } from '../recipe';
 
 @Component({
@@ -12,22 +11,15 @@ export class RecipeCardComponent implements OnInit {
 
   @Input() recipe?: Recipe
 
-  subscription?: Subscription
-
   constructor(
-    private data: DataService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.data.currentRecipe.subscribe(recipe => this.recipe = recipe)
   }
 
-  // ngOnDestroy() {
-  //   this.subscription?.unsubscribe()
-  // }
-
-  // newRecipe() {
-  //   this.data.changeRecipe(this.recipe)
-  // }
+  goToRecipe(): void {
+    this.router.navigateByUrl('/recipe/{{recipe.title}}', {state: {recipe: this.recipe}})
+  }
 
 }

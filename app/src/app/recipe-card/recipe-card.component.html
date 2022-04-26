@@ -1,7 +1,9 @@
-<div *ngIf="recipe" class="card">
-  <h3>{{recipe.title}}</h3>
-  <p>Total Time: {{recipe.prep_time}} minutes</p>
-  <p>Cuisine: {{recipe.cuisine}}</p>
-  <p>{{recipe.type}}</p>
-  <p>Yeilds {{recipe.yeild}} servings</p>
+<div *ngIf="recipe" class="card" routerLink="/recipe/{{recipe.title}}" [state]="{data: {recipe}}">
+  <div class="text">
+    <h3>{{recipe.title}}</h3>
+    <p>Total Time: {{recipe.prep_time}} minutes</p>
+    <p>Cuisine: {{recipe.cuisine}}</p>
+    <p>{{recipe.type}}</p>
+    <p>Yeilds {{recipe.yeild}} servings</p>
+  </div>
 </div>

@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DataService } from '../data.service';
+import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Recipe } from '../recipe';
+import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
 
 @Component({
   selector: 'app-recipe',
@@ -10,23 +9,18 @@ import { Recipe } from '../recipe';
 })
 export class RecipeComponent implements OnInit {
 
-  recipe!: Recipe
-  subscription?: Subscription
+  // @ViewChild(RecipeCardComponent) recipeCard!: { recipe: Recipe | undefined; };
 
-  constructor(
-    private data: DataService,
-  ) { }
+
+  recipe?: Recipe
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.subscription = this.data.currentRecipe.subscribe(recipe => this.recipe = recipe)
+    this.recipe = history.state
+    console.log(this.recipe?._id)
+    // this.recipe = this.recipeCard.recipe
   }
 
-  ngOnDestroy() {
-    this.subscription?.unsubscribe()
-  }
-
-  newRecipe() {
-    this.data.changeRecipe(this.recipe)
-  }
 
 }

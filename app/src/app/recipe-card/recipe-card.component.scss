@@ -1,4 +1,11 @@
 
 .card {
-  border: 2px black solid;
+  width: 200px;
+  border-radius: 5%;
+  background-color: #FFEBC1;
+  background: linear-gradient(135deg, rgba(255,235,193,1) 0%, rgba(255,242,215,1) 35%, rgba(255,235,193,1) 100%);
+
+  .text {
+    padding: 5px;
+  }
 }

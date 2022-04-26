@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-menu',
@@ -14,6 +15,7 @@ export class RecipeMenuComponent implements OnInit {
 
   constructor(
     private recipeService: RecipeService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {

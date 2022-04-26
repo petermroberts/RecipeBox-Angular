@@ -1,0 +1,22 @@
+.new-recipe-form {
+  margin: 20px;
+
+  .new-ingredient {
+    input, button, select {
+      margin: 5px;
+    }
+
+    mat-checkbox {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .diets input {
+      position: absolute;
+      opacity: 0;
+    }
+  }
+}

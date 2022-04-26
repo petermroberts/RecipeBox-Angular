@@ -1,15 +1,30 @@
+
+
 #navbar {
 
+  margin: 0%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #CC704B;
 
   h1 {
     font-family: 'Courier New', Courier, monospace;
+    margin: 10px;
+    font-size: 300%;
   }
 
   a {
-    padding: 25px;
+    color: bisque;
+    margin: 10px;
+    padding: 15px;
+    background-color: #A64B2A;
+    border-radius: 40px;
+
+    a:hover {
+      background-color: #8E3200;
+    }
   }
 
 }
+
